@@ -1,0 +1,24 @@
+<h1>burger</h1>
+
+<h2>add a burger</h2>
+<form id="burger-form">
+  <label for="burger-name"></label>
+  <input type="text" id="burger-name">
+  <button type="submit">Submit</button>
+</form>
+
+<div class="burger-container" id="uneaten">
+  {{#each burgers}}
+    {{#unless devoured}}
+      {{> burgers/burger-block devoured=false}}
+    {{/unless}}
+  {{/each}} 
+</div>
+
+<div class="burger-container" id="eaten">
+  {{#each burgers}}
+    {{#if devoured}}
+      {{> burgers/burger-block devoured=true}}
+    {{/if}}
+  {{/each}} 
+</div>

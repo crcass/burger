@@ -1,0 +1,4 @@
+<div class="burger {{#unless devoured}}new{{/unless}}{{#if devoured}}devoured{{/if}}">
+  <h3>{{id}} {{burger_name}}</h3>
+  {{#unless devoured}}<button class="devour" id="{{id}}" value="{{id}}">devour</button>{{/unless}}
+</div>
