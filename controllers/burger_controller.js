@@ -14,7 +14,7 @@ router.post('/api/burgers', (req, res) => {
     ['burger_name', 'devoured'],
     [req.body.burger_name, req.body.devoured],
     result => {
-    return res.json();
+    return res.json(result);
     }
   );
 });
@@ -22,8 +22,7 @@ router.post('/api/burgers', (req, res) => {
 router.put('/api/burgers/:id', (req, res) => {
   const cond = { id: req.params.id };
   burger.update('devoured', req.body.devoured, cond, result => {
-    console.log(result);
-    return res.json();
+    return res.json(result);
   });
 });
 
