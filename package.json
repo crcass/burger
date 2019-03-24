@@ -19,8 +19,15 @@
   "homepage": "https://github.com/crcass/burger#readme",
   "dependencies": {
     "dotenv": "^7.0.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "prettier": "^1.16.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-google": "^0.12.0"
   }
 }

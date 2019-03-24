@@ -23,9 +23,7 @@ const orm = {
       if (err) throw err;
       cb(res);
     });
-  }
+  },
 };
 
 module.exports = orm;
-
-// UPDATE burgers SET devoured = false WHERE id = ?;

@@ -1,7 +1,6 @@
-const form = document.querySelector("#burger-form");
-let devour = document.querySelectorAll(".devour");
-const burgerName = document.querySelector("#burger-name");
-const label = document.getElementById("burger-label");
+const form = document.querySelector('#burger-form');
+const devour = document.querySelectorAll('.devour');
+const burgerName = document.querySelector('#burger-name');
 
 // create new burger
 form.onsubmit = e => {
@@ -9,20 +8,20 @@ form.onsubmit = e => {
   const newBurger = burgerName.value.trim();
   const burger = {
     burger_name: newBurger,
-    devoured: false
+    devoured: false,
   };
 
   // add new item to page
-  const div = document.createElement("div");
-  const h3 = document.createElement("h3");
-  const button = document.createElement("button");
-  const btnTxt = document.createTextNode("devour");
-  div.classList.add("burger", "new", "arriving");
-  button.classList.add("devour");
+  const div = document.createElement('div');
+  const h3 = document.createElement('h3');
+  const button = document.createElement('button');
+  const btnTxt = document.createTextNode('devour');
+  div.classList.add('burger', 'new', 'arriving');
+  button.classList.add('devour');
   button.appendChild(btnTxt);
 
   // post new burger to server
-  axios.post("/api/burgers", burger).then(response => {
+  axios.post('/api/burgers', burger).then(response => {
     const newId = response.data.insertId;
     const text = document.createTextNode(`${newId} ${newBurger}`);
     div.id = newId;
@@ -33,13 +32,13 @@ form.onsubmit = e => {
     div.appendChild(button);
     uneaten.appendChild(div);
     setTimeout(() => {
-      div.classList.remove("arriving");
+      div.classList.remove('arriving');
     }, 20);
     setTimeout(() => {
       location.reload();
     }, 600);
   });
-  burgerName.value = "";
+  burgerName.value = '';
 };
 
 // update burger boolean on server
@@ -47,19 +46,19 @@ devour.forEach(ele => {
   ele.onclick = function(e) {
     e.preventDefault();
     const id = this.value;
-    console.log(id, "yo");
+    console.log(id, 'yo');
 
     // update page with new information
     const burger = document.getElementById(`${id}`);
     const button = document.getElementById(`btn-${id}`);
-    burger.classList.add("leaving");
+    burger.classList.add('leaving');
     burger.removeChild(button);
-    burger.classList.replace("new", "devoured");
+    burger.classList.replace('new', 'devoured');
     setTimeout(() => {
-      burger.classList.replace("leaving", "arriving");
+      burger.classList.replace('leaving', 'arriving');
       eaten.appendChild(burger);
     }, 600);
-    setTimeout(() => burger.classList.remove("arriving"), 620);
+    setTimeout(() => burger.classList.remove('arriving'), 620);
 
     // logic to update info on server
     const devoured = { devoured: true };
